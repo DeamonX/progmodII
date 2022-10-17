@@ -28,7 +28,7 @@ router.use(bodyParser.json());
 
 /**Methods */
 router.use((req,res,next) => {
-    res.header("Acces-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-Origin",'*');
 
     if(req.method == 'OPTIONS'){
         res.header('Access-Controll-Allow-Method', 'GET DELETE POST PUT');

@@ -2,10 +2,10 @@ import { Request, Response, NextFunction } from "express";
 import logging from "../config/logging";
 import { Connect, Querry } from "../config/mysql";
 
-const NAMESPACE = 'Teszt Kontroller'
+const NAMESPACE = 'Controller of "GetAllBooks"'
 
 const getAllBooks = (req: Request, res: Response, next: NextFunction) =>{
-    logging.info(NAMESPACE, `Get all books called.`)
+    logging.info(NAMESPACE, `is called.`)
     
 
     let query = `SELECT * from books`;

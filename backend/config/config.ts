@@ -2,10 +2,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MYSQL_HOST = process.env.MYSQL_HOST || "localhost";
-const MYSQL_DATABASE = process.env.MYSQL_DATABASE || "konyvtar";
-const MYSQL_USER = process.env.MYSQL_USER || "root";
-const MYSQL_PASSWORD = process.env.MYSQL_PW || "";
+const MYSQL_HOST = process.env.MYSQL_HOST;
+const MYSQL_DATABASE = process.env.MYSQL_DATABASE;
+const MYSQL_USER = process.env.MYSQL_USER;
+const MYSQL_PASSWORD = process.env.MYSQL_PW;
 
 
 const MYSQL = {
@@ -16,7 +16,7 @@ const MYSQL = {
 }
 
 const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'localhost';
-const SERVER_PORT = process.env.SERVER_PORT || 1337;    //ha létezik akkor env-ből, másképp 1337
+const SERVER_PORT = process.env.SERVER_PORT || 1337;
 
 const SERVER = {
     hostname : SERVER_HOSTNAME,
