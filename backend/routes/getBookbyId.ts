@@ -3,7 +3,7 @@ import controller from '../controller/getBook'
 
 const router = express.Router();
 
-router.get('/books', controller.book);
+router.get('/book/', controller.book);
 
 
 

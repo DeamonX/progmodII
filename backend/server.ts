@@ -38,7 +38,7 @@ router.use((req,res,next) => {
 });
 
 /**Routes */
-router.use('/book', bookRoutes);
+router.use('/bookstore', bookRoutes);
 /** Hiba kezelés */
 router.use((req,res,next)=>{
     const error = new Error('nem található');

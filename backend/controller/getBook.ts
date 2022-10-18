@@ -2,9 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import logging from "../config/logging";
 import { Connect, Querry } from "../config/mysql";
 
-const NAMESPACE = 'Controller of "GetAllBooks"'
+const NAMESPACE = 'Controller of "book"'
 
-const getAllBooks = (req: Request, res: Response, next: NextFunction) =>{
+const book = (req: Request, res: Response, next: NextFunction) =>{
     logging.info(NAMESPACE, `is called.`)
     
 
@@ -40,4 +40,4 @@ const getAllBooks = (req: Request, res: Response, next: NextFunction) =>{
     })
 };
 
-export default {getAllBooks}
+export default {book}

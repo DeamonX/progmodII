@@ -2,10 +2,10 @@
   "name": "bookstore",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/server.ts",
+  "main": "server.ts",
   "scripts": {
     "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "start": "nodemon ./backend/server.ts"
+    "start": "nodemon ./server.ts"
   },
   "author": "",
   "license": "ISC",
