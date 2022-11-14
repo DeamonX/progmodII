@@ -2,27 +2,24 @@ import { Request, Response, NextFunction } from 'express';
 import logging from '../config/logging';
 import { Connect, Querry } from '../config/mysql';
 
-const NAMESPACE = 'Controller of Get Book';
+const NAMESPACE = 'Controller of Post Book';
+
+interface Book {
+    name: string;
+}
 
 const book = (req: Request, res: Response, next: NextFunction) => {
     logging.info(NAMESPACE, `is called.`);
 
-    logging.info(NAMESPACE, req.method);
+    let b = req.body as Book;
 
-    let query = '';
-    if (req.params.id == null) {
-        logging.info(NAMESPACE, `is called.`);
-        query = `SELECT * from books`;
-    } else {
-        logging.info(NAMESPACE, `is called.`);
-        query = `SELECT * from books WHERE id = ` + req.params.id + `;`;
-    }
+    let query = `INSERT INTO books (name) VALUES ('` + b.name + `')`;
 
     Connect()
         .then((connection) => {
             Querry(connection, query)
                 .then((result) => {
-                    return res.status(200).json({
+                    return res.status(201).json({
                         result
                     });
                 })

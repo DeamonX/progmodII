@@ -2,21 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import logging from '../config/logging';
 import { Connect, Querry } from '../config/mysql';
 
-const NAMESPACE = 'Controller of Get Book';
+const NAMESPACE = 'Controller of Delete Book';
 
 const book = (req: Request, res: Response, next: NextFunction) => {
     logging.info(NAMESPACE, `is called.`);
 
-    logging.info(NAMESPACE, req.method);
-
-    let query = '';
-    if (req.params.id == null) {
-        logging.info(NAMESPACE, `is called.`);
-        query = `SELECT * from books`;
-    } else {
-        logging.info(NAMESPACE, `is called.`);
-        query = `SELECT * from books WHERE id = ` + req.params.id + `;`;
-    }
+    let query = `DELETE from books WHERE id = ` + req.params.id + `;`;
 
     Connect()
         .then((connection) => {
