@@ -5,7 +5,7 @@ import logging from './config/logging';
 import config from './config/config';
 import routes from './routes/routes';
 
-const NAMESPACE = 'Server';
+const NAMESPACE = 'Szerver';
 const router = express();
 
 /*Log*/
@@ -45,7 +45,7 @@ router.use((req, res, next) => {
     return res.status(404).json({ message: error.message });
 });
 
-/**Create the server */
+/**Server host */
 
 const httpServer = http.createServer(router);
 httpServer.listen(config.server.port, () => logging.info(NAMESPACE, `Fut a szerver itt: ${config.server.hostname}:${config.server.port}`));
