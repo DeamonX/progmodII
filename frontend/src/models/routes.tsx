@@ -1,9 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Fooldal from '../routes/Fooldal';
-import Kategoria from '../routes/Kategoria';
-import Raktar from '../routes/Raktar';
+import Fooldal from '../routes/Home';
 import { categoryLoader, authorLoader, bookLoader } from './routeLoaders';
-import Utanrendeles from '../routes/Utanrendeles';
+import React from 'react';
+import Book from '../routes/Book';
+import Author from '../routes/Author';
+import Category from '../routes/Category';
 
 export const router = createBrowserRouter([
     {
@@ -12,17 +13,17 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/books',
-                element: <Raktar />,
+                element: <Book />,
                 loader: bookLoader
             },
             {
                 path: '/authors',
-                element: <Utanrendeles />,
+                element: <Author />,
                 loader: authorLoader
             },
             {
                 path: '/categories',
-                element: <Kategoria />,
+                element: <Category />,
                 loader: categoryLoader
             }
         ]

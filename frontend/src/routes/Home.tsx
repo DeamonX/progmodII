@@ -1,8 +1,9 @@
 import { Box } from '@mui/material';
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { navBarStyle } from '../styles/navBarStyle';
 
-const Fooldal = () => {
+const Home = () => {
     return (
         <>
             <Box
@@ -33,4 +34,4 @@ const Fooldal = () => {
     );
 };
 
-export default Fooldal;
+export default Home;

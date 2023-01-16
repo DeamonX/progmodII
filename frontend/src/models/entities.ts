@@ -1,16 +1,16 @@
-export interface Category {
+export interface CategoryInterface {
     id?: number;
     label: string;
 }
 
-export interface Author {
+export interface AuthorInterface {
     id?: number;
     family_name: string;
     given_name: number;
     date_of_birth: string;
 }
 
-export interface Book {
+export interface BookInterface {
     id?: number;
     title: string;
     authorId: number;

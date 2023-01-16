@@ -1,24 +1,22 @@
 import { Box, Button, Divider, Modal, TextField, Typography } from '@mui/material';
+import React from 'react';
 import { ChangeEvent, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { createCategory, getCategorys } from '../backend/Api';
-import { Category } from '../models/entities';
-import KategoriaSor from './KategoriaSor';
+import { CategoryInterface } from '../models/entities';
+import CategoryRow from './CategoryRow';
 
-const Kategoria = () => {
-    const [kategoriak, setKategoriak] = useState<Category[]>(useLoaderData() as Category[]);
-    const [ujKategoria, setUjKategoria] = useState<string>('');
+const Category = () => {
+    const [categories, setCategories] = useState<CategoryInterface[]>(useLoaderData() as CategoryInterface[]);
+    const [newCategory, setNewCategory] = useState<CategoryInterface>({} as CategoryInterface);
     const [openModal, setOpenModal] = useState<boolean>(false);
-    const handleNewCategoryChange = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        setUjKategoria(e.target.value as string);
-    };
     const handleCreateNewCategory = async () => {
-        await createCategory({ label: ujKategoria } as Category);
+        await createCategory(newCategory);
         handleReRender();
     };
     const handleReRender = async () => {
         const { data } = await getCategorys();
-        setKategoriak(data as unknown as Category[]);
+        setCategories(data as unknown as CategoryInterface[]);
     };
     return (
         <>
@@ -42,7 +40,9 @@ const Kategoria = () => {
                     >
                         <Typography sx={{ textAlign: 'left', mb: 5, fontSize: 20 }}>Új kategória létrehozása</Typography>
                         <TextField
-                            onChange={handleNewCategoryChange}
+                            onChange={(e) => {
+                                setNewCategory({ label: e.target.value });
+                            }}
                             sx={{
                                 '& label.Mui-focused': {
                                     color: 'black'
@@ -122,10 +122,10 @@ const Kategoria = () => {
                     Új kategória létrehozása
                 </Button>
                 <Divider sx={{ mt: 5 }} />
-                {kategoriak.map((kategoria, key) => {
+                {categories.map((category, key) => {
                     return (
                         <Box key={key} sx={{ display: 'flex', m: 'auto', mt: 5, width: '100%' }}>
-                            <KategoriaSor id={kategoria.id} name={kategoria.label} rerender={handleReRender} />
+                            <CategoryRow label={category.label} />
                         </Box>
                     );
                 })}
@@ -133,4 +133,4 @@ const Kategoria = () => {
         </>
     );
 };
-export default Kategoria;
+export default Category;

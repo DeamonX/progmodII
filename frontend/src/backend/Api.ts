@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Author, Book, Category } from '../models/entities';
+import { AuthorInterface, BookInterface, CategoryInterface } from '../models/entities';
 
 axios.defaults.baseURL = 'http://localhost:1337/';
 
@@ -10,7 +10,7 @@ export const getBooks = () => {
 export const getBookById = (bookId: number) => {
     return axios.get<Response>('books/' + bookId);
 };
-export const postBook = (book: Book) => {
+export const postBook = (book: BookInterface) => {
     return axios.post<Response>('book', {
         title: book.title,
         authorId: book.authorId,
@@ -21,7 +21,7 @@ export const postBook = (book: Book) => {
 export const removeBook = (bookId: number) => {
     return axios.delete<Response>('book/' + bookId);
 };
-export const updateBook = (book: Book) => {
+export const updateBook = (book: BookInterface) => {
     return axios.put<Response>('book/' + book.id, {
         title: book.title,
         authorId: book.authorId,
@@ -37,7 +37,7 @@ export const getAuthors = () => {
 export const getAuthorByID = (authorId: number) => {
     return axios.get<Response>('author/' + authorId);
 };
-export const createAuthor = (author: Author) => {
+export const createAuthor = (author: AuthorInterface) => {
     return axios.put<Response>('author', {
         family_name: author.family_name,
         given_name: author.given_name,
@@ -47,7 +47,7 @@ export const createAuthor = (author: Author) => {
 export const removeAuthor = (authorId: number) => {
     return axios.delete<Response>('author/' + authorId);
 };
-export const updateAuthor = (author: Author) => {
+export const updateAuthor = (author: AuthorInterface) => {
     return axios.put<Response>('author/' + author.id, {
         family_name: author.family_name,
         given_name: author.given_name,
@@ -62,7 +62,7 @@ export const getCategorys = () => {
 export const getCategoryByID = (categoryId: number) => {
     return axios.get<Response>('category/' + categoryId);
 };
-export const createCategory = (category: Category) => {
+export const createCategory = (category: CategoryInterface) => {
     return axios.put<Response>('category', {
         label: category.label
     });
@@ -70,7 +70,7 @@ export const createCategory = (category: Category) => {
 export const removeCategory = (categoryId: number) => {
     return axios.delete<Response>('category/' + categoryId);
 };
-export const updateCategory = (category: Category) => {
+export const updateCategory = (category: CategoryInterface) => {
     return axios.put<Response>('category/' + category.id, {
         label: category.label
     });
